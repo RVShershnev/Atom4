@@ -1,5 +1,6 @@
 ﻿using Atom.Culture.App.Data.Interfaces;
 using Atom.Culture.App.Data.Models;
+using Atom.Culture.PublishServer.Services;
 using Atom.CultureShared;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson.IO;
@@ -18,12 +19,13 @@ namespace Atom.Culture.PublishServer.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-
+        MlService _MlService;
         IUnitOfWork unitOfWork;
 
-        public ValuesController(IUnitOfWork unitOfWork)
+        public ValuesController(IUnitOfWork unitOfWork, MlService mlService)
         {
             this.unitOfWork = unitOfWork;
+            this._MlService = mlService;
         }
 
         // GET: api/<ValuesController>
@@ -41,8 +43,20 @@ namespace Atom.Culture.PublishServer.Controllers
             Atom.CultureShared.Person result = new Atom.CultureShared.Person();
             Atom.Culture.App.Data.Models.Person person = unitOfWork.Persons.GetFromDataset(id);
             var stringresult = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-            return stringresult;
 
+            var nameBook = ""; // из базы.
+            var newNameBooks = _MlService.BookModel(nameBook);
+
+            List<Book> recomendationBooks; // = из базы.
+
+            foreach(var item in newNameBooks)
+            {
+                var Recomendation = new Recomendation();
+                
+               
+            }          
+            return stringresult;
+            
             result.Bithday = person.BirthDate;           
             result.Name = "Аноним";
             result.Sex = "Другое";
