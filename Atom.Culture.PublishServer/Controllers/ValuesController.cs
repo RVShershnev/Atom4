@@ -47,14 +47,21 @@ namespace Atom.Culture.PublishServer.Controllers
             var nameBook = ""; // из базы.
             var newNameBooks = _MlService.BookModel(nameBook);
 
-            List<Book> recomendationBooks; // = из базы.
+            List<Culture.App.Data.Models.Book> recomendationBooks; // = из базы.
+
+            var recomendation = new List<IRecomendation>();
 
             foreach(var item in newNameBooks)
             {
-                var Recomendation = new Recomendation();
-                
-               
-            }          
+                var book = new CultureShared.Book();
+                book.Name = "тест";
+
+                recomendation.Add(book);
+
+            }    
+            
+            // случайный набор
+
             return stringresult;
             
             result.Bithday = person.BirthDate;           
@@ -63,29 +70,9 @@ namespace Atom.Culture.PublishServer.Controllers
             result.Email = person.Email;
             result.Id = person.Id;
 
-            
-            //var recEvents = RecBooks();
-            //var recServices = RecEvents();
-                                
         }
 
-        //public Task<IEnumerable<Book>> RecBooks()
-        //{
-        //    var result = unitOfWork.Books.Where(x => x.Name != "").Skip(100).Take(5);
-        //    return result;
-        //}
-        //public Task<IEnumerable<Event>> RecEvents()
-        //{
-        //    var result = unitOfWork.Books.Where(x => x.Name != "").Skip(100).Take(5);
-        //    return result;
-        //}
        
-        //public Task<IEnumerable<Service>> RecServices()
-        //{
-        //    var result = unitOfWork.Books.Where(x => x.Name != "").Skip(100).Take(5);
-        //    return result;
-        //}
-
 
 
         [HttpGet("group/{id}")]

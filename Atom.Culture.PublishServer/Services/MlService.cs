@@ -16,6 +16,36 @@ namespace Atom.Culture.PublishServer.Services
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
        }
      
+        public IEnumerable<string> ServicesModel(string args)
+        {
+            var WINDOWS1251 = Encoding.GetEncoding("windows-1251");
+            Process process = new Process();
+            ProcessStartInfo processStartInfo = new ProcessStartInfo()
+            {
+                FileName = "python.exe",
+                Arguments = "ServicesModel.py",
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true
+            };
+            process.StartInfo = processStartInfo;
+            process.Start();
+
+            StreamWriter myStreamWriter = process.StandardInput;
+            StreamReader myStreamReader = process.StandardOutput;
+            //Console.OutputEncoding = UTF8;
+            //Console.InputEncoding = UTF8;
+            myStreamWriter.WriteLine(args);
+            Thread.Sleep(100);
+            var s = myStreamReader.ReadToEnd();
+            var enc = myStreamReader.CurrentEncoding;
+            var b = enc.GetBytes(s);
+            // byte[] bb = Encoding.Convert(enc, WINDOWS1251, b);
+            var ddsd = WINDOWS1251.GetString(b);
+            var result = ddsd.Split('\n');
+            myStreamWriter.Close();
+            myStreamReader.Close();
+            return result;
+        }
         public IEnumerable<string> BookModel(string args)
         {           
             var WINDOWS1251 = Encoding.GetEncoding("windows-1251");         
@@ -41,8 +71,7 @@ namespace Atom.Culture.PublishServer.Services
             var b = enc.GetBytes(s);
             // byte[] bb = Encoding.Convert(enc, WINDOWS1251, b);
             var ddsd = WINDOWS1251.GetString(b);
-            var result = ddsd.Split('\n');       
-
+            var result = ddsd.Split('\n');      
             myStreamWriter.Close();
             myStreamReader.Close();
             return result;

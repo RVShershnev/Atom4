@@ -48,6 +48,8 @@ namespace Atom.Culture.PublishServer
             services.AddScoped<TooltipService>();
             services.AddScoped<ContextMenuService>();
 
+            services.AddSingleton<MlService>();
+
             services.AddSingleton<ManageService>();
         }
 

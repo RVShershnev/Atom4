@@ -10,7 +10,7 @@ namespace Atom.CultureShared
     {
         string Id { get; set; }
         string Name { get; set; }
-        long Price { get; set; }
+        string Type { get; }
         
 
     }

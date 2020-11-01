@@ -20,5 +20,6 @@ namespace Atom.CultureShared
         public int CountPeople { get; set; }
         public string[] Tags { get; set; }
 
+        public string Type => "Мероприятие";
     }
 }
