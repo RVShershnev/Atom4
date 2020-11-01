@@ -49,6 +49,7 @@ namespace Atom.Culture.PublishServer
             services.AddScoped<ContextMenuService>();
 
             services.AddSingleton<ManageService>();
+            services.AddSingleton<MlService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

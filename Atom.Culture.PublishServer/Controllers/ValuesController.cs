@@ -19,6 +19,7 @@ namespace Atom.Culture.PublishServer.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        static Random random = new Random();
         MlService _MlService;
         IUnitOfWork unitOfWork;
 
@@ -41,32 +42,61 @@ namespace Atom.Culture.PublishServer.Controllers
         {
             // найти пользователя и выдать о нем информацию.
             Atom.CultureShared.Person result = new Atom.CultureShared.Person();
-            Atom.Culture.App.Data.Models.Person person = unitOfWork.Persons.GetFromDataset(id);
+
             var stringresult = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
-            var nameBook = ""; // из базы.
+            Atom.Culture.App.Data.Models.Person personFromDataSet = unitOfWork.Persons.GetFromDataset("2569");
+            if (personFromDataSet == null)
+            {
+                // Сказать, что такого читателя не существует 
+            }
+            var nameBook = GetTheBestBookFromPerson(personFromDataSet); // из базы.
+            List<Book> recomendationBooks;
+            if (nameBook == null)
+            {
+                // Сказать, что он ещё не читал книги и дать рандомные
+                recomendationBooks = GetRandomBooks();
+            }
+
             var newNameBooks = _MlService.BookModel(nameBook);
 
-            List<Book> recomendationBooks; // = из базы.
 
-            foreach(var item in newNameBooks)
+
+            foreach (var item in newNameBooks)
             {
                 var Recomendation = new Recomendation();
-                
-               
-            }          
+
+
+            }
             return stringresult;
-            
-            result.Bithday = person.BirthDate;           
+
+            result.Bithday = personFromDataSet.BirthDate;
             result.Name = "Аноним";
             result.Sex = "Другое";
-            result.Email = person.Email;
-            result.Id = person.Id;
+            result.Email = personFromDataSet.Email;
+            result.Id = personFromDataSet.Id;
 
-            
+
             //var recEvents = RecBooks();
             //var recServices = RecEvents();
-                                
+
+        }
+
+        private List<Book> GetRandomBooks()
+        {
+            int booksCount = random.Next(3, 6);
+            var allBooks = unitOfWork.Books.Where(x => true);
+            return allBooks.Skip(random.Next(0, allBooks.Count() - booksCount)).Take(booksCount).ToList();
+        }
+
+        private string GetTheBestBookFromPerson(Culture.App.Data.Models.Person personFromDataSet)
+        {
+            string result = null;
+            if (personFromDataSet.Books.Count >= 0)
+            {
+                result = personFromDataSet.Books.ElementAt(random.Next(0, personFromDataSet.Books.Count)).Name;
+            }
+            return result;
         }
 
         //public Task<IEnumerable<Book>> RecBooks()
@@ -79,7 +109,7 @@ namespace Atom.Culture.PublishServer.Controllers
         //    var result = unitOfWork.Books.Where(x => x.Name != "").Skip(100).Take(5);
         //    return result;
         //}
-       
+
         //public Task<IEnumerable<Service>> RecServices()
         //{
         //    var result = unitOfWork.Books.Where(x => x.Name != "").Skip(100).Take(5);
@@ -93,11 +123,11 @@ namespace Atom.Culture.PublishServer.Controllers
         {
             // найти пользователя и выдать о нем информацию.
             Group group = new Group();
-            group.Persons.Add(new Atom.CultureShared.Person() { Age = "11", Email="12121"});
+            group.Persons.Add(new Atom.CultureShared.Person() { Age = "11", Email = "12121" });
             //person.Age = "19";
             //person.Name = "Roman";
             var result = Newtonsoft.Json.JsonConvert.SerializeObject(group);
             return result;
-        }            
+        }
     }
 }
