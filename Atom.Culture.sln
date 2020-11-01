@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30615.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{09F9A51B-A667-42AB-A368-B65ADEF0DD4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atom.Culture.App.Data", "Atom.Culture.App.Data\Atom.Culture.App.Data.csproj", "{9EA49D6A-0AA9-431E-A3A1-874D50A1D34D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atom.Culture.PublishServer", "Atom.Culture.PublishServer\Atom.Culture.PublishServer.csproj", "{60B0BE26-4645-42A1-AFCD-0EF06AE422F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atom.CultureShared", "Atom.CultureShared\Atom.CultureShared.csproj", "{9F54EEB2-6CD4-4FF7-B229-95A038DC1304}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ServicesModel", "ServicesModel\ServicesModel.pyproj", "{A9022F15-40DD-4FF2-976E-B8F9CA6605BF}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "BookModel", "BookModel\BookModel.pyproj", "{F0E73665-BF85-47BD-B9DB-74F272DE311B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{27209B51-C455-424D-874C-333FD2F83D36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EA49D6A-0AA9-431E-A3A1-874D50A1D34D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA49D6A-0AA9-431E-A3A1-874D50A1D34D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA49D6A-0AA9-431E-A3A1-874D50A1D34D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA49D6A-0AA9-431E-A3A1-874D50A1D34D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60B0BE26-4645-42A1-AFCD-0EF06AE422F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B0BE26-4645-42A1-AFCD-0EF06AE422F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B0BE26-4645-42A1-AFCD-0EF06AE422F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B0BE26-4645-42A1-AFCD-0EF06AE422F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F54EEB2-6CD4-4FF7-B229-95A038DC1304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F54EEB2-6CD4-4FF7-B229-95A038DC1304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F54EEB2-6CD4-4FF7-B229-95A038DC1304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F54EEB2-6CD4-4FF7-B229-95A038DC1304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9022F15-40DD-4FF2-976E-B8F9CA6605BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9022F15-40DD-4FF2-976E-B8F9CA6605BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0E73665-BF85-47BD-B9DB-74F272DE311B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0E73665-BF85-47BD-B9DB-74F272DE311B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27209B51-C455-424D-874C-333FD2F83D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27209B51-C455-424D-874C-333FD2F83D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27209B51-C455-424D-874C-333FD2F83D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27209B51-C455-424D-874C-333FD2F83D36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9EA49D6A-0AA9-431E-A3A1-874D50A1D34D} = {09F9A51B-A667-42AB-A368-B65ADEF0DD4A}
+		{60B0BE26-4645-42A1-AFCD-0EF06AE422F9} = {09F9A51B-A667-42AB-A368-B65ADEF0DD4A}
+		{9F54EEB2-6CD4-4FF7-B229-95A038DC1304} = {09F9A51B-A667-42AB-A368-B65ADEF0DD4A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AECAC3F5-F971-40C2-8779-E0E3CBB6EF11}
+	EndGlobalSection
+EndGlobal
