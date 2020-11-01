@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 
 namespace ConsoleApp1
 {
@@ -29,27 +30,20 @@ namespace ConsoleApp1
 
             StreamWriter myStreamWriter = process.StandardInput;       
             StreamReader myStreamReader = process.StandardOutput;
-            
-            
+            //Console.OutputEncoding = UTF8;
+            //Console.InputEncoding = UTF8;
             myStreamWriter.WriteLine(test);
-            
+            Thread.Sleep(100);
 
             var s = myStreamReader.ReadToEnd();
+            var enc = myStreamReader.CurrentEncoding;
+            var b = enc.GetBytes(s);
+            // byte[] bb = Encoding.Convert(enc, WINDOWS1251, b);
+            var ddsd = WINDOWS1251.GetString(b); 
 
-            var ddsd = WINDOWS1251.GetString(UTF8.GetBytes(s)); 
+            File.WriteAllText("1.txt", ddsd);
 
-            File.WriteAllText("1.txt", s, WINDOWS1251);
-
-            // Create two different encodings.
-            Encoding ascii = Encoding.ASCII;
-            Encoding unicode = Encoding.Unicode;
-            Encoding utf8 = Encoding.UTF8;
-            // Convert the string into a byte array.
-            byte[] unicodeBytes = utf8.GetBytes(s);
-
-            // Perform the conversion from one encoding to the other.
-            byte[] asciiBytes = Encoding.Convert(utf8, ascii, unicodeBytes);
-            var strr = ascii.GetString(asciiBytes);
+            
             myStreamWriter.Close();
         }
     }
