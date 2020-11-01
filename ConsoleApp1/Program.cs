@@ -15,7 +15,7 @@ namespace ConsoleApp1
             var WINDOWS1251 = Encoding.GetEncoding("windows-1251");
            
 
-            var test = "Наука и жизнь";
+            var test = "Наука и жизнь\n";
             Process process = new Process();
             ProcessStartInfo processStartInfo = new ProcessStartInfo()
             {
